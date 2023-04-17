@@ -36,8 +36,8 @@
 		<beans:property name="visit_dao" ref="visit_daoBean"/>
 	</beans:bean> -->
 	
-	<beans:bean class="com.webp.db.PlayController">
-		<beans:property name="play_dao" ref="play_daoBean"/>
+	<beans:bean class="korea.it.culture.HomeController">
+		<!-- <beans:property name="play_dao" ref="play_daoBean"/> -->
 	</beans:bean>
 	
 </beans:beans>
