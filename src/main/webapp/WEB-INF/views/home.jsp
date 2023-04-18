@@ -58,16 +58,17 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  
-  <script>
-  function classToggle() {
-	  var el = document.querySelector('.icon-cards__content');
-	  el.classList.toggle('step-animation');
+
+<script>
+	function classToggle() {
+		var el = document.querySelector('.icon-cards__content');
+		el.classList.toggle('step-animation');
 	}
 
-	document.querySelector('#toggle-animation').addEventListener('click', classToggle);
-  </script>
-  
+	document.querySelector('#toggle-animation').addEventListener('click',
+			classToggle);
+</script>
+
 </head>
 
 <body>
@@ -92,7 +93,7 @@
 			class="container d-flex align-items-center justify-content-between">
 
 			<a href="index.html" class="logo"><img
-				src="/culture/resources/assets/img/log1.png" alt="" width="130px"></a>
+				src="/culture/resources/assets/img/logo.png" alt="" width="130px"></a>
 			<!-- Uncomment below if you prefer to use an image logo -->
 			<!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
 
@@ -219,15 +220,29 @@
 	</div> -->
 
 
-<figure class="icon-cards mt-3">
-  <div class="icon-cards__content">
-    <div class="icon-cards__item d-flex align-items-center justify-content-center "><img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF215306_230320_152003.PNG" width="200px"></div>
-    <div class="icon-cards__item d-flex align-items-center justify-content-center"><img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF215287_230320_141147.gif" width="200px"></div>
-    <div class="icon-cards__item d-flex align-items-center justify-content-center"><img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF215281_230320_130653.gif" width="200px"></div>
-     <div class="icon-cards__item d-flex align-items-center justify-content-center"><img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF215281_230320_130653.gif" width="200px"></div>
-      <div class="icon-cards__item d-flex align-items-center justify-content-center"><img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF215281_230320_130653.gif" width="200px"></div>
-  </div>
-</figure>
+	<figure class="icon-cards mt-3">
+		<div class="icon-cards__content">
+			<div
+				class="icon-cards__item d-flex align-items-center justify-content-center ">
+				<img
+					src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF215306_230320_152003.PNG"
+					width="220px">
+			</div>
+			<div
+				class="icon-cards__item d-flex align-items-center justify-content-center">
+				<img
+					src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF215287_230320_141147.gif"
+					width="220px">
+			</div>
+			<div
+				class="icon-cards__item d-flex align-items-center justify-content-center">
+				<img
+					src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF215281_230320_130653.gif"
+					width="220px">
+			</div>
+			
+		</div>
+	</figure>
 
 
 
@@ -240,19 +255,19 @@
 				<div class="row">
 					<p style="font-size: 30px;">오늘의 추천</p>
 					<div
-						class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+						class="col-md-6 col-lg-3 d-flex align-items-center  mb-5 mb-lg-0">
 						<div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-							<div class="icon">
-								<img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF215281_230320_130653.gif" width="100px">
+							<div class="icon d-flex align-items-center">
+							
+								<img
+									src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF215281_230320_130653.gif"
+									width="110px">
 							</div>
-							<h4 class="title">
-								<a href="">신데렐라</a>
-							</h4>
-							<p class="description">버스킹
-								공연!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
+							<div class="title">제목 :와와와오와와와와와와와오아ㅗ아ㅗ아ㅗ아ㅗ아ㅗ아ㅗ와</div>
+							<div class="description"> 작</div>
 						</div>
 					</div>
-
+					
 					<div
 						class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
 						<div class="icon-box" data-aos="fade-up" data-aos-delay="200">

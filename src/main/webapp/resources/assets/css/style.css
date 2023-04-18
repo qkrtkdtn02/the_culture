@@ -286,6 +286,7 @@ h6 {
   background: #fff;
   box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
   transition: 0.3s;
+  border-radius : 5px;
 }
 
 .navbar .dropdown ul li {
@@ -718,6 +719,7 @@ section {
 
 .featured-services .icon {
   margin-bottom: 15px;
+  margin-top : 15px;
 }
 
 .featured-services .icon i {
@@ -730,7 +732,7 @@ section {
 .featured-services .title {
   font-weight: 700;
   margin-bottom: 15px;
-  font-size: 18px;
+  font-size: 12px;
 }
 
 .featured-services .title a {
@@ -738,8 +740,8 @@ section {
 }
 
 .featured-services .description {
-  font-size: 15px;
-  line-height: 28px;
+  font-size: 12px;
+  line-height: 15px;
   margin-bottom: 0;
 }
 
@@ -1841,7 +1843,7 @@ section {
     height: 40vw;
     max-width: 300px;
     max-height: 282px;
-    /*  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); */
+   /*   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);  */
     border-radius: 6px;
     transform-origin: center;
 }
@@ -1851,39 +1853,24 @@ section {
 }
 .icon-cards__item:nth-child(2) {
 
-    transform: rotateY(72deg) translateZ(35vw);
+    transform: rotateY(120deg) translateZ(35vw);
 }
 .icon-cards__item:nth-child(3) {
 
-    transform: rotateY(144deg) translateZ(35vw);
+    transform: rotateY(240deg) translateZ(35vw);
 }
 
-.icon-cards__item:nth-child(4) {
-
-    transform: rotateY(216deg) translateZ(35vw);
-}
-
-.icon-cards__item:nth-child(5) {
-
-    transform: rotateY(288deg) translateZ(35vw);
-}
 @keyframes carousel {
-    0%, 10% {
+    0%, 17.5% {
         transform: translateZ(-35vw) rotateY(0);
     }
-    18%, 28% {
-        transform: translateZ(-35vw) rotateY(-72deg);
+    27.5%, 45% {
+        transform: translateZ(-35vw) rotateY(-120deg);
     }
-    36%, 46% {
-        transform: translateZ(-35vw) rotateY(-144deg);
-    }
-      54%, 64% {
-        transform: translateZ(-35vw) rotateY(-216deg);
-    }
-      72%, 82% {
-        transform: translateZ(-35vw) rotateY(-288deg);
-    }
-    90%, 100% {
+    55%, 72.5% {
+        transform: translateZ(-35vw) rotateY(-240deg);
+
+    82.5%, 100% {
         transform: translateZ(-35vw) rotateY(-360deg);
     }
 }
@@ -1899,7 +1886,7 @@ body {
         transform: scale(1, 1);
     }
     30% {
-        transform: scale(1.25, 0.75);
+        transform: scale(1.25 , 0.75);
     }
     40% {
         transform: scale(0.75, 1.25);
