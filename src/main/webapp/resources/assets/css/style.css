@@ -204,8 +204,24 @@ h6 {
 /**
 * Desktop Navigation 
 */
+#menubar {
+	border-top : solid 3px #b4c6f5;
+	margin-bottom: 30px;
+}
+
+.figure-title{
+	color : navy;
+	position: absolute;
+	top :0;
+	left: 30;
+}
+
+
+
+
 .navbar {
   padding: 0;
+  
 }
 
 .navbar ul {
@@ -214,15 +230,17 @@ h6 {
   display: flex;
   list-style: none;
   align-items: center;
+
 }
 
 .navbar li {
   position: relative;
+
 }
 
 .navbar>ul>li {
   white-space: nowrap;
-  padding: 10px 0 10px 28px;
+  padding: 10px 0 10px 100px;
 }
 
 .navbar a,
@@ -231,7 +249,7 @@ h6 {
   align-items: center;
   justify-content: space-between;
   padding: 0 3px;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
   color: #222222;
   white-space: nowrap;
@@ -286,7 +304,7 @@ h6 {
   background: #fff;
   box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
   transition: 0.3s;
-  border-radius : 5px;
+  border-radius: 8px;
 }
 
 .navbar .dropdown ul li {
@@ -717,12 +735,17 @@ section {
   border-radius: 0px;
 }
 
-.featured-services .icon {
-  margin-bottom: 15px;
-  margin-top : 15px;
+#up{
+color : #7199e3;
+font-size: 30px;
 }
 
-.featured-services .icon i {
+.featured-services .icon {
+  margin-bottom: 15px;
+  
+}
+
+.featured-services .icon {
   font-size: 48px;
   line-height: 1;
   color: #106eea;
@@ -732,7 +755,9 @@ section {
 .featured-services .title {
   font-weight: 700;
   margin-bottom: 15px;
-  font-size: 12px;
+  font-size: 18px;
+  text-align: center;
+  overflow: hidden;
 }
 
 .featured-services .title a {
@@ -740,8 +765,8 @@ section {
 }
 
 .featured-services .description {
-  font-size: 12px;
-  line-height: 15px;
+  font-size: 15px;
+  line-height: 28px;
   margin-bottom: 0;
 }
 
@@ -1819,8 +1844,17 @@ section {
     color: white;
     perspective: 1000px;
     transform-origin: center;
- 
+    margin-bottom: 130px;
+    color: #bc2e1e;
+text-shadow: 0 1px 0px #378ab4, 1px 0 0px #5dabcd, 1px 2px 1px #378ab4, 2px 1px 1px #5dabcd, 2px 3px 2px #378ab4, 3px 2px 2px #5dabcd, 3px 4px 2px #378ab4, 4px 3px 3px #5dabcd, 4px 5px 3px #378ab4, 5px 4px 2px #5dabcd, 5px 6px 2px #378ab4, 6px 5px 2px #5dabcd, 6px 7px 1px #378ab4, 7px 6px 1px #5dabcd, 7px 8px 0px #378ab4, 8px 7px 0px #5dabcd;
 }
+
+.figure-title {
+	position: absolute;
+	top : 0px;
+	left : 0px;
+}
+
 .icon-cards__content {
     position: absolute;
     width: 100%;
@@ -1829,6 +1863,7 @@ section {
     transform-style: preserve-3d;
     transform: translateZ(-30vw) rotateY(0);
     animation: carousel 10s infinite cubic-bezier(0.77, 0, 0.175, 1) forwards;
+	margin-top: 100px;
 }
 .icon-cards__content.step-animation {
     animation: carousel 8s infinite steps(1) forwards;
@@ -1841,9 +1876,9 @@ section {
     bottom: 0;
     width: 60vw;
     height: 40vw;
-    max-width: 300px;
-    max-height: 282px;
-   /*   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);  */
+    max-width: 380px;
+    max-height: 250px;
+/*     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); */
     border-radius: 6px;
     transform-origin: center;
 }
@@ -1853,24 +1888,37 @@ section {
 }
 .icon-cards__item:nth-child(2) {
 
-    transform: rotateY(120deg) translateZ(35vw);
+    transform: rotateY(72deg) translateZ(35vw);
 }
 .icon-cards__item:nth-child(3) {
 
-    transform: rotateY(240deg) translateZ(35vw);
+    transform: rotateY(144deg) translateZ(35vw);
 }
+.icon-cards__item:nth-child(4) {
 
+    transform: rotateY(216deg) translateZ(35vw);
+}
+.icon-cards__item:nth-child(5) {
+
+    transform: rotateY(288deg) translateZ(35vw);
+}
 @keyframes carousel {
-    0%, 17.5% {
+    0%, 10% {
         transform: translateZ(-35vw) rotateY(0);
     }
-    27.5%, 45% {
-        transform: translateZ(-35vw) rotateY(-120deg);
+    18%, 28% {
+        transform: translateZ(-35vw) rotateY(-72deg);
     }
-    55%, 72.5% {
-        transform: translateZ(-35vw) rotateY(-240deg);
-
-    82.5%, 100% {
+    36%, 46% {
+        transform: translateZ(-35vw) rotateY(-144deg);
+    }
+    54%, 64% {
+        transform: translateZ(-35vw) rotateY(-216deg);
+    }
+    72%, 82% {
+        transform: translateZ(-35vw) rotateY(-288deg);
+    }
+    90%, 100% {
         transform: translateZ(-35vw) rotateY(-360deg);
     }
 }
@@ -1886,7 +1934,7 @@ body {
         transform: scale(1, 1);
     }
     30% {
-        transform: scale(1.25 , 0.75);
+        transform: scale(1.25, 0.75);
     }
     40% {
         transform: scale(0.75, 1.25);
@@ -1904,4 +1952,3 @@ body {
         transform: scale(1, 1);
     }
 }
-

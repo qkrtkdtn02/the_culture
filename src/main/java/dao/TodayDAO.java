@@ -5,12 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class PlayDAO {
+public class TodayDAO {
 	
 	SqlSession sqlSession;
 	
 	@Autowired
-	public PlayDAO(SqlSession sqlSession) {
+	public TodayDAO(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 		System.out.println(this.sqlSession);
 	}
