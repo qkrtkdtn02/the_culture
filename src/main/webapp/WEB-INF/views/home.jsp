@@ -200,7 +200,9 @@
 						</div>
 					</div> -->
 					<div class="menu__container">
+						
 						<img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF209905_230117_152330.gif"/>
+						<span>공연</span>
 					</div>
 
 

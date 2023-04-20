@@ -748,6 +748,7 @@ section {
 }
 
 #up{
+padding-top : 20px;	
 color : #7199e3;
 font-size: 30px;
 }
@@ -2046,7 +2047,7 @@ body {
   transform-origin: center center 0px;
   transition: all 0.5s ease-out;
   animation-name: animate;
-  animation-duration: 3s;
+  animation-duration: 6s;
   animation-iteration-count: infinite;
   transform: perspective(1000px) rotateX(35deg) rotateY(4deg) rotateZ(-30deg);
   z-index: 1;
@@ -2063,7 +2064,7 @@ body {
 }
 .menu__container:hover {
   animation: unset;
-  margin-top: 15vh;
+  margin-top: 18vh;
   transform: perspective(1000px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
 }
 .menu__container .menu {
