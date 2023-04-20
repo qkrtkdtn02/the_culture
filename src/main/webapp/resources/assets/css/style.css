@@ -205,6 +205,7 @@ h6 {
 * Desktop Navigation 
 */
 #menubar {
+
 	border-top : solid 3px #b4c6f5;
 	margin-bottom: 30px;
 }
@@ -213,7 +214,7 @@ h6 {
 	color : navy;
 	position: absolute;
 	top :0;
-	left: 30;
+	left: 0;
 }
 
 
@@ -717,6 +718,17 @@ section {
   z-index: 1;
 }
 
+.card {
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 29px 0 rgba(68, 88, 144, 0.12);
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  z-index: 1;
+}
+
 .featured-services .icon-box::before {
   content: "";
   position: absolute;
@@ -739,6 +751,7 @@ section {
 color : #7199e3;
 font-size: 30px;
 }
+
 
 .featured-services .icon {
   margin-bottom: 15px;
@@ -1846,7 +1859,7 @@ font-size: 30px;
     transform-origin: center;
     margin-bottom: 130px;
     color: #bc2e1e;
-text-shadow: 0 1px 0px #378ab4, 1px 0 0px #5dabcd, 1px 2px 1px #378ab4, 2px 1px 1px #5dabcd, 2px 3px 2px #378ab4, 3px 2px 2px #5dabcd, 3px 4px 2px #378ab4, 4px 3px 3px #5dabcd, 4px 5px 3px #378ab4, 5px 4px 2px #5dabcd, 5px 6px 2px #378ab4, 6px 5px 2px #5dabcd, 6px 7px 1px #378ab4, 7px 6px 1px #5dabcd, 7px 8px 0px #378ab4, 8px 7px 0px #5dabcd;
+
 }
 
 .figure-title {
@@ -1951,4 +1964,124 @@ body {
     to {
         transform: scale(1, 1);
     }
+}
+
+.wrapper {
+	width: 90%;
+}
+
+.card {
+	width: 200px;
+	height: 250px;
+	border-radius: 15px;
+	background: white;
+	position: relative;
+
+	margin : 20px;
+	
+	transition: 0.4s ease-out;
+	box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
+}
+.card:hover {
+	transform: translateY(5px);
+}
+.card:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 15px;
+	background: rgba(0, 0, 0, 0.6);
+	z-index: 2;
+	transition: 0.5s;
+	opacity: 0;
+}
+.card:hover:before {
+	opacity: 1;
+}
+.card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 15px;
+}
+.card .info {
+	position: relative;
+	z-index: 3;
+	color: white;
+	opacity: 0;
+	transform: translateY(30px);
+	transition: 0.5s;
+}
+.card:hover .info {
+	overflow : hidden;
+	opacity: 1;
+	transform: translateY(0px);
+}
+.card .info h1 {
+	margin: 0px;
+}
+.card .info p {
+	letter-spacing: 1px;
+	font-size: 5px;
+	margin-top: 3px;
+}
+
+.menu__container {
+  width: 200px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 10px 40px 2px rgba(0, 0, 0, 0.4);
+  background: #000;
+  transform-origin: center center 0px;
+  transition: all 0.5s ease-out;
+  animation-name: animate;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  transform: perspective(1000px) rotateX(35deg) rotateY(4deg) rotateZ(-30deg);
+  z-index: 1;
+  position: relative;
+}
+
+.menu__container img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.menu__container:hover {
+  animation: unset;
+  margin-top: 15vh;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+}
+.menu__container .menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 100%;
+  height: 100%;
+  color: #fff;
+}
+@keyframes animate {
+  0% {
+    margin-top: 20vh;
+  }
+  50% {
+    margin-top: 18vh;
+  }
+  100% {
+    margin-top: 20vh;
+  }
 }

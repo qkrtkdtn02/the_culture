@@ -5,6 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+	<script>
+		function login( f ) {
+			f.action = 'login.do';
+			f.method = 'get';
+			f.submit();
+			
+		}
+	
+	</script>
 </head>
 <body>
 	<form>
@@ -18,7 +28,10 @@
 		<th>pw</th>
 		<td><input name="pw"></td>
 		</tr>
-	
+		
+		<tr>
+			<input type="button" value="확인" onclick="login(this.form);">
+		</tr>
 	
 	</table>
 	</form>

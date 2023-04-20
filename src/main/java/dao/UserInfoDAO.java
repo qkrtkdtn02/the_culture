@@ -4,6 +4,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import vo.UserInfoVO;
+
 @Repository
 public class UserInfoDAO {
 	
@@ -16,7 +18,10 @@ public class UserInfoDAO {
 	}
 	
 	
-	
+	public UserInfoVO selectOne(String id) {
+		UserInfoVO vo = sqlSession.selectOne("u.userinfo_one", id);
+		return vo;
+	}
 	
 	
 }

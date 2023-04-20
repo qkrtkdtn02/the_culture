@@ -63,11 +63,6 @@
 		var el = document.querySelector('.icon-cards__content');
 		el.classList.toggle('step-animation');
 	}
-	
-	function info( let info ) {
-		alert("info");
-		
-	}
 </script>
 
 </head>
@@ -147,86 +142,43 @@
 
 
 
-	<figure class="icon-cards mt-3">
 
-		<div class="figure-title">
-			<h2>★인기 TOP5</h2>
-		</div>
+	<main class="container ">
+		<div class="row justify-content-center">
+			<p id="up">${genrenm}</p>
+			
+				<!-- <div class="card col-2" style= "margin: 10px 10px;">
+							<img src="..." class="card-img-top" alt="...">
+							
+								<div class="card-body">
+									<h5 class="card-title">Card title</h5>
+									<p class="card-text">Some quick example text to build on
+										the card title and make up the bulk of the card's content.</p>
+								</div>
+						
+						</div> -->
 
-		<div class="icon-cards__content">
-			<c:forEach var="vo" items="${ rank }" begin="0" end="4">
-				<div
-					class="icon-cards__item d-flex align-items-center justify-content-center ">
-					<a href="#"><img src="${vo.play_poster}" width="220px"> </a>
-				</div>
-			</c:forEach>
-
-
-
-		</div>
-	</figure>
-
-
-
-	<main id="main">
-
-		<!-- ======= Featured Services Section ======= -->
-		<section id="featured-services" class="featured-services">
-			<div class="container" data-aos="fade-up">
-				<hr>
-
-				<div class="row ">
-
-					<p id="up" class="position-relative">오늘의 추천</p>
-					<c:if test="${login.user_role_id eq 2}">
-						<button id="update" type="button"
-							class="btn btn-outline-primary col-1 position-absolute top-5 end-0">수정하기</button>
-					</c:if>
-					<!-- <div class="col-3 d-flex align-items-center ">
-						<div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-							<div class="icon d-flex justify-content-center">
-
-								<img
-									src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF215281_230320_130653.gif"
-									width="110px">
-							</div>
-							<div class="title" style="text-align: center;">신데렐라
-								asdasdasdasdasdasdasdasdasdasdasdasda</div>
-							<div class="description">기간 : 와아ㅗ아ㅘ와와왕</div>
-							<div class="description">장소 : ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ</div>
-							<div class="description">주최 :ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁ</div>
-							<div class="description">장르 : 연극</div>
-							<div class="description">별점 : 4.5</div>
+				<div class="wrapper row justify-content-center">
+				<c:forEach var="vo" items="${ select }">
+					<div class="card col-3">
+						<img
+							src="${vo.play_poster}" />
+						<div class="info">
+							<span>"${vo.play_prfnm}"<span>
+							<p>장소 : "${vo.play_locnm}"</p>
+							
 						</div>
-					</div> -->
-					<div class="menu__container">
-						<img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF209905_230117_152330.gif"/>
 					</div>
-
-
-					<div class="menu__container">
-						<img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF209771_230116_102222.PNG"/>
-					</div>
-
-					<div class="menu__container">
-						<img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF204650_221222_131313.jpg"/>
-					</div>
-					
-					<div class="menu__container">
-						<img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF204198_221221_165005.jpg"/>
-					</div>
-					
-
+					</c:forEach>
 				</div>
-
-			</div>
-		</section>
-		<!-- End Featured Services Section -->
-
-
-
+			
+		</div>
 	</main>
-	<!-- End #main -->
+
+
+
+
+
 
 	<!-- ======= Footer ======= -->
 	<footer id="footer">
@@ -297,7 +249,6 @@
 
 	<!-- Template Main JS File -->
 	<script src="/culture/resources/assets/js/main.js"></script>
-
 </body>
 
 </html>
