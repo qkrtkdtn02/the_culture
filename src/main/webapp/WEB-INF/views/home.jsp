@@ -49,6 +49,7 @@
 <!-- Template Main CSS File -->
 <link href="/culture/resources/assets/css/style.css?ver=1"
 	rel="stylesheet">
+	
 
 <!-- =======================================================
   * Template Name: BizLand
@@ -146,29 +147,60 @@
 	</div>
 
 
-
-	<figure class="icon-cards mt-3">
-
-		<div class="figure-title">
-			<h2>★인기 TOP5</h2>
-		</div>
-
-		<div class="icon-cards__content">
-			<c:forEach var="vo" items="${ rank }" begin="0" end="4">
-				<div
-					class="icon-cards__item d-flex align-items-center justify-content-center ">
-					<a href="#"><img src="${vo.play_poster}" width="220px"> </a>
-				</div>
-			</c:forEach>
-
-
-
-		</div>
-	</figure>
-
+	
 
 
 	<main id="main">
+		<div class="container">
+			<hr>
+			<h2 >실시간 랭킹</h2>
+		</div>
+		<figure class="icon-cards mt-3 container">
+		
+		
+
+		 <div class="icon-cards__content">
+			<c:forEach var="vo" items="${ rank }" begin="0" end="4" varStatus="status">
+				
+				<div
+				
+					class="icon-cards__item d-flex align-items-center justify-content-center container">
+					<div class="align-top" >${status.count}</div>
+					<a href="#"><img src="${vo.play_poster}" width="250px"> </a>
+				</div>
+			</c:forEach>
+			
+			
+
+
+
+		</div> 
+		
+			<%-- <div class="container">
+				<div class="row">
+				<div class="col-md-12 text-left">
+						<h2 class="heading-section mb-5">Carousel #03</h2>
+					</div>
+					<div class="col">
+						<div class="featured-carousel owl-carousel">
+						<c:forEach var="vo" items="${ rank }" begin="0" end="4">
+							<div class="item">
+								<div class="work">
+									<div class="img d-flex align-items-end justify-content-center" style="background-image: url(${vo.play_poster});">
+										<div class="text w-100">
+											<span class="cat">Web Design</span>
+										</div>
+									</div>
+								</div>
+							</div>	
+							</c:forEach>
+						</div>
+					</div>
+				</div>
+			</div>
+	 --%>
+	</figure>
+		
 
 		<!-- ======= Featured Services Section ======= -->
 		<section id="featured-services" class="featured-services">
@@ -178,10 +210,6 @@
 				<div class="row ">
 
 					<p id="up" class="position-relative">오늘의 추천</p>
-					<c:if test="${login.user_role_id eq 2}">
-						<button id="update" type="button"
-							class="btn btn-outline-primary col-1 position-absolute top-5 end-0">수정하기</button>
-					</c:if>
 					<!-- <div class="col-3 d-flex align-items-center ">
 						<div class="icon-box" data-aos="fade-up" data-aos-delay="100">
 							<div class="icon d-flex justify-content-center">
@@ -199,7 +227,7 @@
 							<div class="description">별점 : 4.5</div>
 						</div>
 					</div> -->
-					<div class="menu__container">
+					<!-- <div class="menu__container">
 						
 						<img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF209905_230117_152330.gif"/>
 						<span>공연</span>
@@ -216,9 +244,41 @@
 					
 					<div class="menu__container">
 						<img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF204198_221221_165005.jpg"/>
-					</div>
-					
+					</div> -->
 
+					<div class="containers">
+					
+					<c:forEach var="vo" items="${ today }">
+						<div class="cards">
+						
+							<div class="Box">
+								
+						<c:if test="${login.user_role_id eq 2}">		
+								<a href="#" onclick="location.href='update.do?play_id=${vo.play_id}'">
+					    </c:if>
+					    <c:if test="${login.user_role_id eq 0}">		
+								<a href="#" onclick="location.href='ls.do'">
+					    </c:if>
+					
+					<img
+									src="${vo.play_poster}"></a>
+							</div>
+							<div class="details">
+								<h2>Lorem ipsum dolor</h2>
+								<p>consectetur adipiscing elit, sed do eiusmod tempor
+									incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+									veniam, quis nostrud exercitation ullamco laboris nisi ut
+									aliquip ex ea commodo consequat. Duis aute irure dolor in
+									reprehenderit in voluptate velit esse cillum dolore eu fugiat
+									nulla pariatur.</p>
+							</div>
+						</div>
+						</c:forEach>
+
+
+						
+						
+					</div>
 				</div>
 
 			</div>
@@ -296,9 +356,9 @@
 		src="/culture/resources/assets/vendor/waypoints/noframework.waypoints.js"></script>
 	<script
 		src="/culture/resources/assets/vendor/php-email-form/validate.js"></script>
-
 	<!-- Template Main JS File -->
 	<script src="/culture/resources/assets/js/main.js"></script>
+
 
 </body>
 

@@ -180,7 +180,7 @@
 						</div> -->
 
 				<div class="wrapper row justify-content-center">
-				<c:forEach var="vo" items="${ select }">
+				<c:forEach var="vo" items="${ allselect }">
 					<div class="card col-3">
 						<img
 							src="${vo.play_poster}" />
@@ -196,7 +196,21 @@
 					</div>
 					</c:forEach>
 					
-					<div align="center" style="font-size: 20px;">
+					
+					<div>
+					<select id="search">
+						<option value="prfnm">제목</option>
+						<option value="locnm">장소</option>
+						<option value="fromto">기간</option>
+						<option value="prfnm_locnm_fromto">제목+장소+기간</option>
+					</select>
+					<input id="search_text">
+					<input type="button" value="검색" onclick="search();">
+
+
+				</div>
+					
+					<div align="center" style="font-size: 30px;">
 					${ pageMenu }
 					</div>
 
