@@ -1,10 +1,7 @@
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page session="false"%>
 <!DOCTYPE html>
 <html>
 
@@ -18,9 +15,14 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>THE CULTURE</title>
+<title>BizLand Bootstrap Template - Index</title>
+<meta content="" name="description">
+<meta content="" name="keywords">
 
-
+<!-- Favicons -->
+<link href="/culture/resources/assets/img/favicon.png" rel="icon">
+<link href="/culture/resources/assets/img/apple-touch-icon.png"
+	rel="apple-touch-icon">
 
 <!-- Google Fonts -->
 <link
@@ -47,9 +49,7 @@
 	rel="stylesheet">
 
 <!-- Template Main CSS File -->
-<link href="/culture/resources/assets/css/style.css?ver=1"
-	rel="stylesheet">
-	
+<link href="/culture/resources/assets/css/style.css" rel="stylesheet">
 
 <!-- =======================================================
   * Template Name: BizLand
@@ -64,11 +64,9 @@
 		var el = document.querySelector('.icon-cards__content');
 		el.classList.toggle('step-animation');
 	}
-	
-	function info( let info ) {
-		alert("info");
-		
-	}
+
+	document.querySelector('#toggle-animation').addEventListener('click',
+			classToggle);
 </script>
 
 </head>
@@ -78,20 +76,13 @@
 	<!-- ======= Top Bar ======= -->
 	<section id="topbar" class="d-flex align-items-center">
 		<div class="container d-flex justify-content-end">
-			<div class="social-links d-none d-md-flex align-items-end">
-				<c:if test="${empty login.user_id}">
-					<a href="#" onclick="location.href='login_form.do'">로그인</a>
-					<a href="#">회원가입</a>
-					<a href="#">고객센터</a>
-					<a href="#">마이페이지</a>
-				</c:if>
-
-				<c:if test="${not empty login.user_id}">
-					<span>${login.user_name}님<span> <a href="#"
-							onclick="location.href='logout.do'">로그아웃</a> <a href="#">고객센터</a>
-							<a href="#">마이페이지</a>
-				</c:if>
-
+			<!-- <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
+      </div> -->
+			<div class="social-links d-none d-md-flex align-items-left">
+				<a href="#" class="twitter">로그인</a> <a href="#" class="facebook">회원가입</a>
+				<a href="#" class="instagram">고객센터</a> <a href="#" class="instagram">마이페이지</a>
 			</div>
 		</div>
 	</section>
@@ -100,185 +91,225 @@
 	<header id="header" class="d-flex align-items-center">
 		<div
 			class="container d-flex align-items-center justify-content-between">
-			<a href="#" onclick="location.href='culture.do'" class="logo"><img
+
+			<a href="index.html" class="logo"><img
 				src="/culture/resources/assets/img/logo.png" alt="" width="130px"></a>
+			<!-- Uncomment below if you prefer to use an image logo -->
+			<!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
+
 			<nav id="navbar" class="navbar">
 				<form class="d-flex">
 					<input class="form-control me-2" type="search" placeholder="Search"
 						aria-label="Search">
 					<button class="btn btn-outline-primary" type="submit">Search</button>
 				</form>
+
+				<!--     <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+     
+          <li><a class="nav-link scrollto" href="#about">공연</a></li>
+          <li><a class="nav-link scrollto" href="#services">전시</a></li>
+          <li><a class="nav-link scrollto " href="#portfolio">랭킹</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul> -->
 				<i class="bi bi-list mobile-nav-toggle"></i>
 			</nav>
+			<!-- .navbar -->
+
 		</div>
 	</header>
 	<!-- End Header -->
 
 
-	<div id="menubar" class="navbar container justify-content-left">
-		<nav id="navbar" class="navbar">
+	<div class="  container justify-content-left"
+		style="background: white; border-top: 3px #106eea solid;">
+
+
+
+		<nav id="navbar" class="navbar" style="maing-left: 400px;">
+
 			<ul>
-				<li><a class="nav-link scrollto" href="#"
-					onclick="location.href='info.do?genrenm=연극'">연극</a></li>
-				<li><a class="nav-link scrollto" href="#"
-					onclick="location.href='info.do?genrenm=뮤지컬'">뮤지컬</a></li>
-				<li class="dropdown"><a href="#"
-					onclick="location.href='info.do?genrenm=음악'"><span>음악</span> <i
+				<!-- <li><a class="nav-link scrollto active" href="#hero">Home</a></li> -->
+				<!--   <li><a class="nav-link scrollto" href="#about">공연</a></li>
+          <li><a class="nav-link scrollto" href="#services">전시</a></li> -->
+
+				<li><a class="nav-link scrollto" href="#services">연극</a></li>
+				<li><a class="nav-link scrollto" href="#services">뮤지컬</a></li>
+				<li class="dropdown"><a href="#"><span>음악</span> <i
 						class="bi bi-chevron-down"></i></a>
 					<ul>
-						<li><a href="#"
-							onclick="location.href='info.do?genrenm=서양음악(클래식)'">서양음악(클래식)</a></li>
-						<li><a href="#"
-							onclick="location.href='info.do?genrenm=한국음악(국악)'">한국음악(국악)</a></li>
-						<li><a href="#"
-							onclick="location.href='info.do?genrenm=대중음악'">대중음악</a></li>
+						<li><a href="#">서양음악</a></li>
+						<li><a href="#">한국음악</a></li>
+						<li><a href="#">대중음악</a></li>
 					</ul></li>
-				<li><a class="nav-link scrollto" href="#"
-					onclick="location.href='info.do?genrenm=무용'">무용</a></li>
-				<li><a class="nav-link scrollto" href="#services"
-					onclick="location.href='info.do?genrenm=서커스/마술'">서커스/마술</a></li>
-				<li><a class="nav-link scrollto" href="#services"
-					onclick="location.href='info.do?genrenm=복합'">복합</a></li>
+				<li class="dropdown"><a href="#"><span>무용</span> <i
+						class="bi bi-chevron-down"></i></a>
+					<ul>
+						<li><a href="#">서양무용</a></li>
+						<li><a href="#">한국무용</a></li>
+						<li><a href="#">대중무용</a></li>
+					</ul></li>
+				<li><a class="nav-link scrollto" href="#services">서커스/마술</a></li>
+				<li><a class="nav-link scrollto" href="#services">종합</a></li>
+				<!-- <li><a class="nav-link scrollto " href="#portfolio">랭킹</a></li> 
+				 <li><a class="nav-link scrollto" href="#team">Team</a></li>-->
 
 			</ul>
 
 		</nav>
+		<!-- .navbar -->
 
 	</div>
 
 
-	
+
+	<!-- ======= Hero Section ======= -->
+	<!-- <div id="carouselExampleIndicators" class="carousel slide"
+		data-bs-ride="carousel">
+		<div class="carousel-indicators">
+			<button type="button" data-bs-target="#carouselExampleIndicators"
+				data-bs-slide-to="0" class="active" aria-current="true"
+				aria-label="Slide 1"></button>
+			<button type="button" data-bs-target="#carouselExampleIndicators"
+				data-bs-slide-to="1" aria-label="Slide 2"></button>
+			<button type="button" data-bs-target="#carouselExampleIndicators"
+				data-bs-slide-to="2" aria-label="Slide 3"></button>
+		</div>
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img
+					src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF215306_230320_152003.PNG" width="300px;"
+					class="d-block w-30" alt="...">
+			</div>
+			<div class="carousel-item">
+				<img src="/project2/resources/assets/img/practice2.jpg"
+					class="d-block w-100" alt="...">
+			</div>
+			<div class="carousel-item">
+				<img src="/project2/resources/assets/img/practice3.jpg"
+					class="d-block w-100" alt="...">
+			</div>
+		</div>
+		<button class="carousel-control-prev" type="button"
+			data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+				class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button"
+			data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span> <span
+				class="visually-hidden">Next</span>
+		</button>
+	</div> -->
+
+
+	<figure class="icon-cards mt-3">
+		<div class="icon-cards__content">
+			<div
+				class="icon-cards__item d-flex align-items-center justify-content-center ">
+				<img
+					src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF215306_230320_152003.PNG"
+					width="220px">
+			</div>
+			<div
+				class="icon-cards__item d-flex align-items-center justify-content-center">
+				<img
+					src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF215287_230320_141147.gif"
+					width="220px">
+			</div>
+			<div
+				class="icon-cards__item d-flex align-items-center justify-content-center">
+				<img
+					src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF215281_230320_130653.gif"
+					width="220px">
+			</div>
+			
+		</div>
+	</figure>
+
 
 
 	<main id="main">
-		<div class="container">
-			<hr>
-			<h2 >실시간 랭킹</h2>
-		</div>
-		<figure class="icon-cards mt-3 container">
-		
-		
-
-		 <div class="icon-cards__content">
-			<c:forEach var="vo" items="${ rank }" begin="0" end="4" varStatus="status">
-				
-				<div
-				
-					class="icon-cards__item d-flex align-items-center justify-content-center container">
-					<div class="align-top" >${status.count}</div>
-					<a href="#"><img src="${vo.play_poster}" width="250px"> </a>
-				</div>
-			</c:forEach>
-			
-			
-
-
-
-		</div> 
-		
-			<%-- <div class="container">
-				<div class="row">
-				<div class="col-md-12 text-left">
-						<h2 class="heading-section mb-5">Carousel #03</h2>
-					</div>
-					<div class="col">
-						<div class="featured-carousel owl-carousel">
-						<c:forEach var="vo" items="${ rank }" begin="0" end="4">
-							<div class="item">
-								<div class="work">
-									<div class="img d-flex align-items-end justify-content-center" style="background-image: url(${vo.play_poster});">
-										<div class="text w-100">
-											<span class="cat">Web Design</span>
-										</div>
-									</div>
-								</div>
-							</div>	
-							</c:forEach>
-						</div>
-					</div>
-				</div>
-			</div>
-	 --%>
-	</figure>
-		
 
 		<!-- ======= Featured Services Section ======= -->
 		<section id="featured-services" class="featured-services">
 			<div class="container" data-aos="fade-up">
-				<hr>
 
-				<div class="row ">
-
-					<p id="up" class="position-relative">오늘의 추천</p>
-					<!-- <div class="col-3 d-flex align-items-center ">
+				<div class="row">
+					<p style="font-size: 30px;">오늘의 추천</p>
+					<div
+						class="col-md-6 col-lg-3 d-flex align-items-center  mb-5 mb-lg-0">
 						<div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-							<div class="icon d-flex justify-content-center">
-
+							<div class="icon d-flex align-items-center">
+							
 								<img
 									src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF215281_230320_130653.gif"
 									width="110px">
 							</div>
-							<div class="title" style="text-align: center;">신데렐라
-								asdasdasdasdasdasdasdasdasdasdasdasda</div>
-							<div class="description">기간 : 와아ㅗ아ㅘ와와왕</div>
-							<div class="description">장소 : ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ</div>
-							<div class="description">주최 :ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁ</div>
-							<div class="description">장르 : 연극</div>
-							<div class="description">별점 : 4.5</div>
+							<div class="title">제목 :와와와오와와와와와와와오아ㅗ아ㅗ아ㅗ아ㅗ아ㅗ아ㅗ와</div>
+							<div class="description"> 작</div>
 						</div>
-					</div> -->
-					<!-- <div class="menu__container">
-						
-						<img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF209905_230117_152330.gif"/>
-						<span>공연</span>
-					</div>
-
-
-					<div class="menu__container">
-						<img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF209771_230116_102222.PNG"/>
-					</div>
-
-					<div class="menu__container">
-						<img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF204650_221222_131313.jpg"/>
 					</div>
 					
-					<div class="menu__container">
-						<img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF204198_221221_165005.jpg"/>
-					</div> -->
-
-					<div class="containers">
-					
-					<c:forEach var="vo" items="${ today }">
-						<div class="cards">
-						
-							<div class="Box">
-								
-						<c:if test="${login.user_role_id eq 2}">		
-								<a href="#" onclick="location.href='update.do?play_id=${vo.play_id}'">
-					    </c:if>
-					    <c:if test="${login.user_role_id eq 0}">		
-								<a href="#" onclick="location.href='ls.do'">
-					    </c:if>
-					
-					<img
-									src="${vo.play_poster}"></a>
+					<div
+						class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+						<div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+							<div class="icon">
+								<i class="bx bx-file"></i>
 							</div>
-							<div class="details">
-								<h2>Lorem ipsum dolor</h2>
-								<p>consectetur adipiscing elit, sed do eiusmod tempor
-									incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-									veniam, quis nostrud exercitation ullamco laboris nisi ut
-									aliquip ex ea commodo consequat. Duis aute irure dolor in
-									reprehenderit in voluptate velit esse cillum dolore eu fugiat
-									nulla pariatur.</p>
-							</div>
+							<h4 class="title">
+								<a href="">김동준</a>
+							</h4>
+							<p class="description">야외
+								마술쇼!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1</p>
 						</div>
-						</c:forEach>
-
-
-						
-						
 					</div>
+
+					<div
+						class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+						<div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+							<div class="icon">
+								<i class="bx bx-tachometer"></i>
+							</div>
+							<h4 class="title">
+								<a href="">김유미</a>
+							</h4>
+							<p class="description">단독 댄스
+								공연!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
+						</div>
+					</div>
+
+					<div
+						class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+						<div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+							<div class="icon">
+								<i class="bx bx-world"></i>
+							</div>
+							<h4 class="title">
+								<a href="">김시윤</a>
+							</h4>
+							<p class="description">풍경화
+								전시회!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
+						</div>
+					</div>
+
 				</div>
 
 			</div>
@@ -313,28 +344,76 @@
 
 					<div class="col-lg-3 col-md-6 footer-contact">
 						<h3>
-							THE CULTURE<span>.</span>
+							BizLand<span>.</span>
 						</h3>
+						<p>
+							A108 Adam Street <br> New York, NY 535022<br> United
+							States <br> <br> <strong>Phone:</strong> +1 5589 55488
+							55<br> <strong>Email:</strong> info@example.com<br>
+						</p>
+					</div>
 
+					<div class="col-lg-3 col-md-6 footer-links">
+						<h4>Useful Links</h4>
+						<ul>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">About
+									us</a></li>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Terms
+									of service</a></li>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Privacy
+									policy</a></li>
+						</ul>
+					</div>
 
-						<div class="container py-4">
-							<div class="copyright">
-								&copy; Copyright <strong><span>THE CULTURE</span></strong>. All
-								Rights Reserved
-							</div>
-							<div class="credits">
-								<!-- All the links in the footer should remain intact. -->
-								<!-- You can delete the links only if you purchased the pro version. -->
-								<!-- Licensing information: https://bootstrapmade.com/license/ -->
-								<!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
-								Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-							</div>
+					<div class="col-lg-3 col-md-6 footer-links">
+						<h4>Our Services</h4>
+						<ul>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Web
+									Design</a></li>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Web
+									Development</a></li>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Product
+									Management</a></li>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Graphic
+									Design</a></li>
+						</ul>
+					</div>
+
+					<div class="col-lg-3 col-md-6 footer-links">
+						<h4>Our Social Networks</h4>
+						<p>Cras fermentum odio eu feugiat lide par naso tierra videa
+							magna derita valies</p>
+						<div class="social-links mt-3">
+							<a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> <a
+								href="#" class="facebook"><i class="bx bxl-facebook"></i></a> <a
+								href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+							<a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+							<a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
 						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="container py-4">
+			<div class="copyright">
+				&copy; Copyright <strong><span>BizLand</span></strong>. All Rights
+				Reserved
+			</div>
+			<div class="credits">
+				<!-- All the links in the footer should remain intact. -->
+				<!-- You can delete the links only if you purchased the pro version. -->
+				<!-- Licensing information: https://bootstrapmade.com/license/ -->
+				<!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
+				Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+			</div>
+		</div>
 	</footer>
 	<!-- End Footer -->
-
-
-
 
 	<div id="preloader"></div>
 	<a href="#"
@@ -356,9 +435,9 @@
 		src="/culture/resources/assets/vendor/waypoints/noframework.waypoints.js"></script>
 	<script
 		src="/culture/resources/assets/vendor/php-email-form/validate.js"></script>
+
 	<!-- Template Main JS File -->
 	<script src="/culture/resources/assets/js/main.js"></script>
-
 
 </body>
 

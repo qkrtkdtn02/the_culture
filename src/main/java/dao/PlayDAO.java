@@ -1,16 +1,8 @@
 package dao;
 
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import vo.UserInfoVO;
-import vo.PlayVO;
 
 @Repository
 public class PlayDAO {
@@ -20,33 +12,9 @@ public class PlayDAO {
 	@Autowired
 	public PlayDAO(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
-		System.out.println(this.sqlSession);
 	}
 	
-	public List<PlayVO> selectallList(HashMap<String, Object> map) {
-		List<PlayVO> list = sqlSession.selectList("p.all_list",map);
-		return list;
-	}
 	
-	public List<PlayVO> selectList() {
-		List<PlayVO> list = sqlSession.selectList("p.rank_list");
-		return list;
-	}
-	
-	public List<PlayVO> selectgenre( HashMap<String, Object> map ) {
-		List<PlayVO> list = sqlSession.selectList("p.genre_list",map);
-		return list;
-	}
-	
-	public int getRowTotal(HashMap<String, Object> map) {
-		int res = sqlSession.selectOne("p.play_count",map);
-		return res;
-	}
-	
-	public int getRowallTotal(HashMap<String, Object> map) {
-		int res = sqlSession.selectOne("p.play_allcount",map);
-		return res;
-	}
 	
 	
 	
