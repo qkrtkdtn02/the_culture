@@ -49,7 +49,6 @@
 <!-- Template Main CSS File -->
 <link href="/culture/resources/assets/css/style.css?ver=1"
 	rel="stylesheet">
-	
 
 <!-- =======================================================
   * Template Name: BizLand
@@ -65,10 +64,26 @@
 		el.classList.toggle('step-animation');
 	}
 	
-	function info( let info ) {
-		alert("info");
-		
+	
+	function search() {
+		//조회 카테고리 검색
+		let search = document.getElementById("search").value;
+
+		//검색어 조회
+		let search_text = document.getElementById("search_text").value.trim();
+
+		//카테고리가 전체보기(all)로 지정되어 있지않은 경우라면 반드시 검색어가 입력되어있어야한다.
+
+		if (search != 'all' && search_text == "") {
+			alert("검색어를 입력하세요");
+			return;
+		}
+
+		location.href = "info.do?search=" + search + "&search_text="
+				+ encodeURIComponent(search_text);
 	}
+	
+	
 </script>
 
 </head>
@@ -147,148 +162,69 @@
 	</div>
 
 
-	
 
 
-	<main id="main">
-		<div class="container">
-			<hr>
-			<h2 >실시간 랭킹</h2>
-		</div>
-		<figure class="icon-cards mt-3 container">
-		
-		
-
-		 <div class="icon-cards__content">
-			<c:forEach var="vo" items="${ rank }" begin="0" end="4" varStatus="status">
-				
-				<div
-				
-					class="icon-cards__item d-flex align-items-center justify-content-center container">
-					<div class="align-top" >${status.count}</div>
-					<a href="#"><img src="${vo.play_poster}" width="250px"> </a>
-				</div>
-			</c:forEach>
+	<main class="container ">
+		<div class="row justify-content-center">
+			<p id="up">${genrenm}</p>
 			
-			
-
-
-
-		</div> 
-		
-			<%-- <div class="container">
-				<div class="row">
-				<div class="col-md-12 text-left">
-						<h2 class="heading-section mb-5">Carousel #03</h2>
-					</div>
-					<div class="col">
-						<div class="featured-carousel owl-carousel">
-						<c:forEach var="vo" items="${ rank }" begin="0" end="4">
-							<div class="item">
-								<div class="work">
-									<div class="img d-flex align-items-end justify-content-center" style="background-image: url(${vo.play_poster});">
-										<div class="text w-100">
-											<span class="cat">Web Design</span>
-										</div>
-									</div>
+				<!-- <div class="card col-2" style= "margin: 10px 10px;">
+							<img src="..." class="card-img-top" alt="...">
+							
+								<div class="card-body">
+									<h5 class="card-title">Card title</h5>
+									<p class="card-text">Some quick example text to build on
+										the card title and make up the bulk of the card's content.</p>
 								</div>
-							</div>	
-							</c:forEach>
+						
+						</div> -->
+
+				<div class="wrapper row justify-content-center">
+				<c:forEach var="vo" items="${ allselect }">
+					<div class="card col-3">
+						<img
+							src="${vo.play_poster}" />
+						<div class="info">
+							<span>${vo.play_prfnm}<span>
+							<p></p>
+							<p>장소 : ${vo.play_locnm}</p>
+							<p>시작날짜 : ${vo.play_from}</p>
+							<p>종료날짜 : ${vo.play_to}</p>
+							<p>상태 : ${vo.play_prfstate}</p>
+							
 						</div>
 					</div>
+					</c:forEach>
+					
+					
+					<div>
+					<select id="search">
+						<option value="prfnm">제목</option>
+						<option value="locnm">장소</option>
+						<option value="fromto">기간</option>
+						<option value="prfnm_locnm_fromto">제목+장소+기간</option>
+					</select>
+					<input id="search_text">
+					<input type="button" value="검색" onclick="search();">
+
+
 				</div>
-			</div>
-	 --%>
-	</figure>
-		
-
-		<!-- ======= Featured Services Section ======= -->
-		<section id="featured-services" class="featured-services">
-			<div class="container" data-aos="fade-up">
-				<hr>
-
-				<div class="row ">
-
-					<p id="up" class="position-relative">오늘의 추천</p>
-					<!-- <div class="col-3 d-flex align-items-center ">
-						<div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-							<div class="icon d-flex justify-content-center">
-
-								<img
-									src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF215281_230320_130653.gif"
-									width="110px">
-							</div>
-							<div class="title" style="text-align: center;">신데렐라
-								asdasdasdasdasdasdasdasdasdasdasdasda</div>
-							<div class="description">기간 : 와아ㅗ아ㅘ와와왕</div>
-							<div class="description">장소 : ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ</div>
-							<div class="description">주최 :ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁ</div>
-							<div class="description">장르 : 연극</div>
-							<div class="description">별점 : 4.5</div>
-						</div>
-					</div> -->
-					<!-- <div class="menu__container">
-						
-						<img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF209905_230117_152330.gif"/>
-						<span>공연</span>
-					</div>
-
-
-					<div class="menu__container">
-						<img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF209771_230116_102222.PNG"/>
-					</div>
-
-					<div class="menu__container">
-						<img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF204650_221222_131313.jpg"/>
-					</div>
 					
-					<div class="menu__container">
-						<img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF204198_221221_165005.jpg"/>
-					</div> -->
-
-					<div class="containers">
-					
-					<c:forEach var="vo" items="${ today }">
-						<div class="cards">
-						
-							<div class="Box">
-								
-						<c:if test="${login.user_role_id eq 2}">		
-								<a href="#" onclick="location.href='update.do?play_id=${vo.play_id}'">
-					    </c:if>
-					    <c:if test="${login.user_role_id eq 0}">		
-								<a href="#" onclick="location.href='ls.do'">
-					    </c:if>
-					
-					<img
-									src="${vo.play_poster}"></a>
-							</div>
-							<div class="details">
-								<h2>Lorem ipsum dolor</h2>
-								<p>consectetur adipiscing elit, sed do eiusmod tempor
-									incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-									veniam, quis nostrud exercitation ullamco laboris nisi ut
-									aliquip ex ea commodo consequat. Duis aute irure dolor in
-									reprehenderit in voluptate velit esse cillum dolore eu fugiat
-									nulla pariatur.</p>
-							</div>
-						</div>
-						</c:forEach>
-
-
-						
-						
+					<div align="center" style="font-size: 30px;">
+					${ pageMenu }
 					</div>
+
+
+			
 				</div>
-
-			</div>
-		</section>
-		<!-- End Featured Services Section -->
-
-
-
+			
+		</div>
 	</main>
-	<!-- End #main -->
+
+
+
+
+
 
 	<!-- ======= Footer ======= -->
 	<footer id="footer">
@@ -356,10 +292,9 @@
 		src="/culture/resources/assets/vendor/waypoints/noframework.waypoints.js"></script>
 	<script
 		src="/culture/resources/assets/vendor/php-email-form/validate.js"></script>
+
 	<!-- Template Main JS File -->
 	<script src="/culture/resources/assets/js/main.js"></script>
-
-
 </body>
 
 </html>

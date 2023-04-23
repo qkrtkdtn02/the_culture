@@ -3,6 +3,104 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="p">
+	<select id="rank_list" resultType="vo.PlayVO">
+		Select p.*
+		From play p inner
+		join reple r
+		on p.play_id = r.play_id
+		Order by r.reple_rating desc
+	</select>
+
+	
+	<select parameterType="java.util.HashMap" resultType="vo.PlayVO"
+		id="genre_list">
+		select * from(select RANK() OVER(order by play_ref desc) no , p.* from
+		(select * from play
+
+		
+		<trim prefixOverrides="or|and" prefix="where">
+
+			<!-- 필요없는 or과 and를 없애줌 -->
+			<if test="genrenm != null">play_genrenm = #{genrenm} </if>
+
+				<if test="prfnm != null">or play_prfnm Like '%'||#{prfnm}||'%' </if>
+
+				<if test="locnm != null">or play_locnm Like '%'||#{locnm}||'%' </if>
+
+				<if test="fromto != null">or play_from Like '%'||#{fromto}||'%' or play_to Like
+					'%'||#{fromto}||'%'  </if>
+
+		</trim>
+		) p) where no between #{start} AND #{end}
+		</select>
+
+
+
+		<select parameterType="java.util.HashMap" resultType="int"
+			id="play_count">
+			select count(*) from play
+
+			<trim prefixOverrides="or | and" prefix="where">
+
+				<!-- 필요없는 or과 and를 없애줌 -->
+				<if test="genrenm != null">play_genrenm = #{genrenm} </if>
+
+				<if test="prfnm != null">or play_prfnm Like '%'||#{prfnm}||'%' </if>
+
+				<if test="locnm != null">or play_locnm Like '%'||#{locnm}||'%' </if>
+
+				<if test="fromto != null">or play_from Like '%'||#{fromto}||'%' or play_to Like
+					'%'||#{fromto}||'%'  </if>
+
+			</trim>
+
+		</select>
+
+
+		<select parameterType="java.util.HashMap" resultType="vo.PlayVO"
+		id="all_list">
+		select * from(select RANK() OVER(order by play_ref desc) no , p.* from
+		(select * from play
+
+		
+		<trim prefixOverrides="or|and" prefix="where">
+
+			<!-- 필요없는 or과 and를 없애줌 -->
+		
+
+				<if test="prfnm != null"> play_prfnm Like '%'||#{prfnm}||'%' </if>
+
+				<if test="locnm != null">or play_locnm Like '%'||#{locnm}||'%' </if>
+
+				<if test="fromto != null">or play_from Like '%'||#{fromto}||'%' or play_to Like
+					'%'||#{fromto}||'%'  </if>
+
+		</trim>
+		) p) where no between #{start} AND #{end}
+		</select>
+		
+		<select parameterType="java.util.HashMap" resultType="int"
+			id="play_allcount">
+			select count(*) from play
+
+			<trim prefixOverrides="or | and" prefix="where">
+
+				<!-- 필요없는 or과 and를 없애줌 -->
+
+				<if test="prfnm != null">or play_prfnm Like '%'||#{prfnm}||'%' </if>
+
+				<if test="locnm != null">or play_locnm Like '%'||#{locnm}||'%' </if>
+
+				<if test="fromto != null">or play_from Like '%'||#{fromto}||'%' or play_to Like
+					'%'||#{fromto}||'%'  </if>
+
+			</trim>
+
+		</select>
+
+
+
+
 
 </mapper>
 

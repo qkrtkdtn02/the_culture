@@ -1,7 +1,7 @@
 package vo;
 
-public class PlayVO {
-	private String play_id, play_prfnm, play_from, play_to, play_locnm, play_genrenm, play_prfstate, play_ref, play_poster;
+public class TodayVO {
+	private String play_id, play_prfnm, play_from, play_to, play_genrenm, play_poster, play_prfstate, play_locnm;
 
 	public String getPlay_id() {
 		return play_id;
@@ -35,20 +35,20 @@ public class PlayVO {
 		this.play_to = play_to;
 	}
 
-	public String getPlay_locnm() {
-		return play_locnm;
-	}
-
-	public void setPlay_locnm(String play_locnm) {
-		this.play_locnm = play_locnm;
-	}
-
 	public String getPlay_genrenm() {
 		return play_genrenm;
 	}
 
 	public void setPlay_genrenm(String play_genrenm) {
 		this.play_genrenm = play_genrenm;
+	}
+
+	public String getPlay_poster() {
+		return play_poster;
+	}
+
+	public void setPlay_poster(String play_poster) {
+		this.play_poster = play_poster;
 	}
 
 	public String getPlay_prfstate() {
@@ -59,24 +59,15 @@ public class PlayVO {
 		this.play_prfstate = play_prfstate;
 	}
 
-	public String getPlay_ref() {
-		return play_ref;
+	public String getPlay_locnm() {
+		return play_locnm;
 	}
 
-	public void setPlay_ref(String play_ref) {
-		this.play_ref = play_ref;
-	}
-
-	public String getPlay_poster() {
-		return play_poster;
-	}
-
-	public void setPlay_poster(String play_poster) {
-		this.play_poster = play_poster;
+	public void setPlay_locnm(String play_locnm) {
+		this.play_locnm = play_locnm;
 	}
 	
 	
 	
-
-
+	
 }
