@@ -181,7 +181,7 @@
 
 				<div class="wrapper row justify-content-center">
 				<c:forEach var="vo" items="${ select }">
-					<div class="card col-3">
+					<a href="moreinfo.do?play_id=${vo.play_id}" class="card col-3"><div >
 						<img
 							src="${vo.play_poster}" />
 						<div class="info">
@@ -190,10 +190,9 @@
 							<p>장소 : ${vo.play_locnm}</p>
 							<p>시작날짜 : ${vo.play_from}</p>
 							<p>종료날짜 : ${vo.play_to}</p>
-							<p>상태 : ${vo.play_prfstate}</p>
 							
 						</div>
-					</div>
+					</div></a>
 					</c:forEach>
 					
 					<div align="center" style="font-size: 20px;">

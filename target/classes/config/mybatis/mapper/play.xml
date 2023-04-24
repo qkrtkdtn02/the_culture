@@ -98,9 +98,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 		</select>
 
+	<update id="p.update_list"  parameterType="java.util.HashMap">
 
-
-
+		update today set (play_id , play_prfnm , play_from ,  play_to ,play_genrenm ,play_poster , Play_prfstate, play_locnm)
+		= (select play_id , play_prfnm , play_from ,  play_to , play_genrenm ,play_poster , Play_prfstate, play_locnm 
+		from play 
+			where play_id = #{select_id})
+		where play_id = #{play_id}
+		
+	</update>
 
 </mapper>
 

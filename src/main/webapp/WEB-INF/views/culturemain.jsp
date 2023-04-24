@@ -65,8 +65,12 @@
 		el.classList.toggle('step-animation');
 	}
 	
-	function info( let info ) {
-		alert("info");
+	function moreinfo( f ){
+		let a = f.play_id.value;
+		alert(a);
+		f.action="moreinfo.do";
+		f.method="get";
+		f.submit();
 		
 	}
 </script>
@@ -151,6 +155,7 @@
 
 
 	<main id="main">
+	
 		<div class="container">
 			<hr>
 			<h2 >실시간 랭킹</h2>
@@ -163,10 +168,10 @@
 			<c:forEach var="vo" items="${ rank }" begin="0" end="4" varStatus="status">
 				
 				<div
-				
+
 					class="icon-cards__item d-flex align-items-center justify-content-center container">
 					<div class="align-top" >${status.count}</div>
-					<a href="#"><img src="${vo.play_poster}" width="250px"> </a>
+					<a href="moreinfo.do?play_id=${vo.play_id}"><img src="${vo.play_poster}" width="250px"> </a>
 				</div>
 			</c:forEach>
 			
@@ -245,47 +250,55 @@
 					<div class="menu__container">
 						<img src="http://www.kopis.or.kr/upload/pfmPoster/PF_PF204198_221221_165005.jpg"/>
 					</div> -->
-
+						
 					<div class="containers">
 					
 					<c:forEach var="vo" items="${ today }">
+					<form>
 						<div class="cards">
 						
 							<div class="Box">
 								
 						<c:if test="${login.user_role_id eq 2}">		
-								<a href="#" onclick="location.href='update.do?play_id=${vo.play_id}'">
+								<a href="javascript:void(0)" onclick="location.href='update.do?play_id=${vo.play_id}'">
+									
 					    </c:if>
-					    <c:if test="${login.user_role_id eq 0}">		
-								<a href="#" onclick="location.href='ls.do'">
+					    
+					    <c:if test="${login.user_role_id eq 0}">
+					   
+								 <a href="javascript:void(0)" onclick = 'moreinfo(this.form);'>
+								
 					    </c:if>
+					    
+					    
+					 	<img src="${vo.play_poster}"/></a>
+									
+				
+							</div>
 					
-					<img
-									src="${vo.play_poster}"></a>
-							</div>
 							<div class="details">
-								<h2>Lorem ipsum dolor</h2>
-								<p>consectetur adipiscing elit, sed do eiusmod tempor
-									incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-									veniam, quis nostrud exercitation ullamco laboris nisi ut
-									aliquip ex ea commodo consequat. Duis aute irure dolor in
-									reprehenderit in voluptate velit esse cillum dolore eu fugiat
-									nulla pariatur.</p>
-							</div>
-						</div>
-						</c:forEach>
 
+								<h2>${vo.play_prfnm}</h2>
+								<p>장소 : ${vo.play_locnm}</p>
+								<p>기간 : ${vo.play_from} ~ ${vo.play_to}</p>
+								<p>장르 : ${vo.play_genrenm} </p>
+								<p>공연상태 : ${vo.play_prfstate} </p>
+							</div>
+							
+						</div>
+						</form>
+						</c:forEach>
+				
 
 						
 						
 					</div>
+					
 				</div>
 
 			</div>
 		</section>
 		<!-- End Featured Services Section -->
-
-
 
 	</main>
 	<!-- End #main -->

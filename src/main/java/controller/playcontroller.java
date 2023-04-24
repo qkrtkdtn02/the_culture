@@ -54,7 +54,7 @@ public class playcontroller {
 		
 		model.addAttribute("today", tlist);
 		model.addAttribute("rank", list);
-		return "/WEB-INF/views/home.jsp";
+		return "/WEB-INF/views/culturemain.jsp";
 	}
 
 	@RequestMapping("/login_form.do")
@@ -129,12 +129,14 @@ public class playcontroller {
 		model.addAttribute("pageMenu", pageMenu);
 		model.addAttribute("select", list);
 		model.addAttribute("genrenm", genrenm);
-		return "/WEB-INF/views/info.jsp";
+		return "/WEB-INF/views/playgeList.jsp";
 	}
 	
 	
 	@RequestMapping("/update.do")
 	public String update(Model model) {
+		
+		String play_id = request.getParameter("play_id");
 		
 		int nowPage = 1;
 		String page = request.getParameter("page");
@@ -184,6 +186,7 @@ public class playcontroller {
 		// 하단 페이지 메뉴 생성
 		String pageMenu = Pagingupdate.getPaging("update.do", nowPage, // 현재 페이지
 				row_total,
+				play_id,
 				search_param,// 전체 게시글 수
 				 Common.Board.BLOCKLIST, // 한 페이지에 보여주는 게시글 수
 				Common.Board.BLOCKPAGE); // 페이지 메뉴의 수
@@ -191,6 +194,8 @@ public class playcontroller {
 		
 		List<PlayVO> list = playdao.selectallList(map);
 		
+		
+		model.addAttribute("play_id",play_id);
 		model.addAttribute("pageMenu", pageMenu);
 		model.addAttribute("allselect", list);
 		
@@ -199,6 +204,26 @@ public class playcontroller {
 		
 		
 		return "/WEB-INF/views/update.jsp";
+	}
+	
+	@RequestMapping("/updatelist.do")
+	public String updatelist(Model model) {
+		String select_id = request.getParameter("select_id");
+		String play_id = request.getParameter("play_id");
+		HashMap<String, String> id = new HashMap<String, String>();
+		id.put("select_id",select_id);
+		id.put("play_id",play_id);
+		
+		playdao.updatelist(id);
+		
+		return "redirect:culture.do";
+		
+	}
+	
+	
+	@RequestMapping("/moreinfo.do")
+	public String moreinfo() {
+		return "/WEB-INF/views/moreinfo.jsp";
 	}
 	
 }

@@ -48,6 +48,9 @@ public class PlayDAO {
 		return res;
 	}
 	
-	
+	public int updatelist(HashMap<String, String> id) {
+		int res = sqlSession.update("p.update_list",id);
+		return res;
+	}
 	
 }

@@ -5,24 +5,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
-
 <head>
-<!-- CSS only -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-	crossorigin="anonymous">
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-<title>THE CULTURE</title>
-
-
-
-<!-- Google Fonts -->
+<title>공연에대한 상세 정보</title>
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
 	rel="stylesheet">
@@ -49,45 +36,8 @@
 <!-- Template Main CSS File -->
 <link href="/culture/resources/assets/css/style.css?ver=1"
 	rel="stylesheet">
-
-<!-- =======================================================
-  * Template Name: BizLand
-  * Updated: Mar 10 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/bizland-bootstrap-business-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-
-<script>
-	function classToggle() {
-		var el = document.querySelector('.icon-cards__content');
-		el.classList.toggle('step-animation');
-	}
-	
-	
-	function search() {
-		//조회 카테고리 검색
-		let search = document.getElementById("search").value;
-
-		//검색어 조회
-		let search_text = document.getElementById("search_text").value.trim();
-
-		//카테고리가 전체보기(all)로 지정되어 있지않은 경우라면 반드시 검색어가 입력되어있어야한다.
-
-		if (search != 'all' && search_text == "") {
-			alert("검색어를 입력하세요");
-			return;
-		}
-
-		location.href = "update.do?play_id="+ "${play_id}" + "&search=" + search + "&search_text="
-				+ encodeURIComponent(search_text);
-	}
-	
-	
-</script>
-
 </head>
-
+<body>
 <body>
 
 	<!-- ======= Top Bar ======= -->
@@ -164,59 +114,82 @@
 
 
 
-	<main class="container ">
-		<div class="row justify-content-center">
-			<p id="up">${genrenm}</p>
-			
-				<!-- <div class="card col-2" style= "margin: 10px 10px;">
-							<img src="..." class="card-img-top" alt="...">
-							
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">Some quick example text to build on
-										the card title and make up the bulk of the card's content.</p>
-								</div>
-						
-						</div> -->
+	<main class=" container ">
 
-				<div class="wrapper row justify-content-center">
-				<c:forEach var="vo" items="${ allselect }">
-					<a href="updatelist.do?select_id=${vo.play_id }&play_id=${play_id}" class="card col-3" ><div>
-					<img
-							src="${vo.play_poster}" />
-						<div class="info">
-							<span>${vo.play_prfnm}<span>
-							<p></p>
-							<p>장소 : ${vo.play_locnm}</p>
-							<p>시작날짜 : ${vo.play_from}</p>
-							<p>종료날짜 : ${vo.play_to}</p>
-						</div>
-					</div></a>
-					</c:forEach>
-					
-					
-					<div>
-					<select id="search">
-						<option value="prfnm">제목</option>
-						<option value="locnm">장소</option>
-						<option value="fromto">기간</option>
-						<option value="prfnm_locnm_fromto">제목+장소+기간</option>
-					</select>
-					<input id="search_text">
-					<input type="button" value="검색" onclick="search();">
+		<h2>뽀로로</h2>
+		<div>연극</div>
+		<hr  style="margin-bottom: 50px;">
+		<div class=" container row d-flex justify-content-evenly " style="margin-bottom: 50px;">
+			<img class="col-3  img-thumbnail rounded float-start"
+				src="${info.playPoster}">
+			<table class="col-6" border="1">
+				<tr>
+					<th style="width: 100px;">공연기간</th>
+					<td style="width: 500px;"></td>
+				</tr>
+				<tr>
+					<th>공연장소</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>공연시간</th>
+					<td>${info.playDtguidance}</td>
+				</tr>
+				<tr>
+					<th>관람연령</th>
+					<td>${info.playPrfage}</td>
+				</tr>
+				<tr>
+					<th>티켓가격</th>
+					<td>${info.playTicketprice}</td>
+				</tr>
+				<tr>
+					<th>출연진</th>
+					<td>${info.playPrfcast}</td>
+				</tr>
+				<tr>
+					<th>제작진</th>
+					<c:if test="${fn:trim(info.playPrfcrew) eq ''}">
+						<td>해당사항없음</td>
+					</c:if>
+					<c:if test="${fn:trim(info.playPrfcrew) ne ''}">
+						<td>${info.playPrfcrew}</td>
+					</c:if>
 
+				</tr>
+				<tr>
+					<th>주최-주관</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>기획-제작</th>
+					<td></td>
+				</tr>
+			</table>
 
-				</div>
-					
-					<div align="center" style="font-size: 30px;">
-					${ pageMenu }
-					</div>
-
-
-			
-				</div>
-			
 		</div>
+		
+		<div>
+		<button type="button" class="btn btn-dark">목록보기</button>
+		</div>
+		
+
+		<div class="btn-group container" role="group"
+			aria-label="Basic radio toggle button group" style="margin-bottom: 30px;">
+			<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked > 
+			<label class="btn  btn-outline-danger" for="btnradio1">소개</label> 
+			<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"> 
+			<label class="btn  btn-outline-danger" for="btnradio2">공연장</label>
+		</div>
+
+		<div class="container d-flex justify-content-center" style="margin-bottom: 30px;">
+			<div>
+				<img src="http://www.kopis.or.kr/upload/pfmIntroImage/PF_PF217150_230420_1221160.jpg">
+			
+			</div>
+		
+		</div>
+
 	</main>
 
 
@@ -293,6 +266,27 @@
 
 	<!-- Template Main JS File -->
 	<script src="/culture/resources/assets/js/main.js"></script>
-</body>
 
+	<div>
+		<ul>
+
+			<li>공연 시설ID:${info.locId}</li>
+			<li>공연ID:${info.playId}</li>
+			<li>출연진 정보:${info.playPrfcast}</li>
+			<li>제작진 정보:${info.playPrfcrew}</li>
+			<li>공연런타임:${info.playPrfruntime}</li>
+			<li>관람연령:${info.playPrfage}</li>
+			<li>제작사였구나:${info.playEntrpsnm}</li>
+			<li>티켓가격${info.playTicketprice}</li>
+			<li>포스터 이미지 ${info.playPoster}</li>
+			<li>상세정보 이미지${info.playStyurls}</li>
+			<li>공연시작 일시${info.playDtguidance}</li>
+
+		</ul>
+	</div>
+
+</body>
+<script>
+	
+</script>
 </html>
