@@ -10,6 +10,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		on p.play_id = r.play_id
 		Order by r.reple_rating desc
 	</select>
+	
+	
+	<select id="one_list" resultType="vo.PlayVO" parameterType="String">
+		select * from play
+		where play_id = #{play_id}
+	</select>
 
 	
 	<select parameterType="java.util.HashMap" resultType="vo.PlayVO"

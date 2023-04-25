@@ -30,7 +30,7 @@
 		</tr>
 		
 		<tr>
-			<input type="button" value="확인" onclick="login(this.form);">
+			<input type="button" value="확인" onclick="login(this.form);"/>
 		</tr>
 	
 	</table>

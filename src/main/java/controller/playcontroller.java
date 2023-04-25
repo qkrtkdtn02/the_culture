@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import dao.LocInfoDAO;
 import dao.PlayDAO;
 import dao.PlayInfoDAO;
 import dao.RepleDAO;
@@ -20,6 +21,7 @@ import dao.UserInfoDAO;
 import util.Common;
 import util.Paging;
 import util.Pagingupdate;
+import vo.PlayInfoVO;
 import vo.PlayVO;
 import vo.TodayVO;
 import vo.UserInfoVO;
@@ -32,6 +34,7 @@ public class playcontroller {
 	RepleDAO repledao;
 	UserInfoDAO userinfodao;
 	TodayDAO todaydao;
+	LocInfoDAO locinfodao;
 
 	@Autowired // 자동주입 : spring으로부터 자동생성 가능한 객체를 new없이 알아서 생성해 준다
 	HttpServletRequest request;
@@ -51,7 +54,7 @@ public class playcontroller {
 	public String selectList(Model model) {
 		List<PlayVO> list = playdao.selectList();
 		List<TodayVO> tlist = todaydao.selectList();
-		
+
 		model.addAttribute("today", tlist);
 		model.addAttribute("rank", list);
 		return "/WEB-INF/views/culturemain.jsp";
@@ -91,8 +94,6 @@ public class playcontroller {
 	@RequestMapping("/info.do")
 	public String info(Model model) {
 		String genrenm = request.getParameter("genrenm");
-		
-		
 
 		int nowPage = 1;
 		String page = request.getParameter("page");
@@ -110,34 +111,28 @@ public class playcontroller {
 		map.put("end", end);
 		map.put("genrenm", genrenm);
 
-
-
-
 		int row_total = playdao.getRowTotal(map);
 		System.out.println(row_total);
-
 
 		// 하단 페이지 메뉴 생성
 		String pageMenu = Paging.getPaging("info.do", nowPage, // 현재 페이지
 				row_total, // 전체 게시글 수
-				 genrenm,
-				 Common.Board.BLOCKLIST, // 한 페이지에 보여주는 게시글 수
+				genrenm, Common.Board.BLOCKLIST, // 한 페이지에 보여주는 게시글 수
 				Common.Board.BLOCKPAGE); // 페이지 메뉴의 수
-		
+
 		List<PlayVO> list = playdao.selectgenre(map);
-		
+
 		model.addAttribute("pageMenu", pageMenu);
 		model.addAttribute("select", list);
 		model.addAttribute("genrenm", genrenm);
 		return "/WEB-INF/views/playgeList.jsp";
 	}
-	
-	
+
 	@RequestMapping("/update.do")
 	public String update(Model model) {
-		
+
 		String play_id = request.getParameter("play_id");
-		
+
 		int nowPage = 1;
 		String page = request.getParameter("page");
 		if (page != null && !page.isEmpty()) {
@@ -155,75 +150,79 @@ public class playcontroller {
 
 		String search = request.getParameter("search"); // 카테고리
 		String search_text = request.getParameter("search_text");
-		
-		//검색어가 입력되어 있는 경우
-		if(search != null) {
-			
+
+		// 검색어가 입력되어 있는 경우
+		if (search != null) {
+
 			switch (search) {
 			case "prfnm_locnm_fromto":
-				map.put("prfnm",search_text);
-				map.put("locnm",search_text);
-				map.put("fromto",search_text);
+				map.put("prfnm", search_text);
+				map.put("locnm", search_text);
+				map.put("fromto", search_text);
 				break;
-			case "prfnm" :
+			case "prfnm":
 				map.put("prfnm", search_text);
 				break;
-			case "locnm" :
+			case "locnm":
 				map.put("locnm", search_text);
 				break;
-			case "fromto" :
+			case "fromto":
 				map.put("fromto", search_text);
-				break;	
-			}//if
-			
-		}//switch
+				break;
+			}// if
 
+		} // switch
 
 		int row_total = playdao.getRowallTotal(map);
 		System.out.println(row_total);
-		String search_param= String.format("search=%s&search_text=%s",search,search_text);
+		String search_param = String.format("search=%s&search_text=%s", search, search_text);
 
 		// 하단 페이지 메뉴 생성
 		String pageMenu = Pagingupdate.getPaging("update.do", nowPage, // 현재 페이지
-				row_total,
-				play_id,
-				search_param,// 전체 게시글 수
-				 Common.Board.BLOCKLIST, // 한 페이지에 보여주는 게시글 수
+				row_total, play_id, search_param, // 전체 게시글 수
+				Common.Board.BLOCKLIST, // 한 페이지에 보여주는 게시글 수
 				Common.Board.BLOCKPAGE); // 페이지 메뉴의 수
-		
-		
+
 		List<PlayVO> list = playdao.selectallList(map);
-		
-		
-		model.addAttribute("play_id",play_id);
+
+		model.addAttribute("play_id", play_id);
 		model.addAttribute("pageMenu", pageMenu);
 		model.addAttribute("allselect", list);
-		
-		
-		
-		
-		
+
 		return "/WEB-INF/views/update.jsp";
 	}
-	
+
 	@RequestMapping("/updatelist.do")
 	public String updatelist(Model model) {
 		String select_id = request.getParameter("select_id");
 		String play_id = request.getParameter("play_id");
 		HashMap<String, String> id = new HashMap<String, String>();
-		id.put("select_id",select_id);
-		id.put("play_id",play_id);
-		
+		id.put("select_id", select_id);
+		id.put("play_id", play_id);
+
 		playdao.updatelist(id);
-		
+
 		return "redirect:culture.do";
-		
+
 	}
-	
-	
+
 	@RequestMapping("/moreinfo.do")
-	public String moreinfo() {
+	public String moreinfo(Model model) {
+		String play_id = request.getParameter("play_id");
+	
+		PlayVO playvo = playdao.selectone(play_id);
+		PlayInfoVO infovo = playinfodao.moreinfo(play_id);
+		
+		
+		
+		String loc_id = infovo.getLoc_id();
+		
+		
+		
+		model.addAttribute("play", playvo);
+		model.addAttribute("info", infovo);
+
 		return "/WEB-INF/views/moreinfo.jsp";
 	}
-	
+
 }

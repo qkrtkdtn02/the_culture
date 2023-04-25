@@ -38,6 +38,11 @@ public class PlayDAO {
 		return list;
 	}
 	
+	public PlayVO selectone( String play_id ) {
+		PlayVO vo = sqlSession.selectOne("p.one_list",play_id);
+		return vo;
+	}
+	
 	public int getRowTotal(HashMap<String, Object> map) {
 		int res = sqlSession.selectOne("p.play_count",map);
 		return res;
