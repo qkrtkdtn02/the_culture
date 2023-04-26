@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import vo.UserInfoVO;
+import vo.LocInfoVO;
 import vo.PlayVO;
 
 @Repository
@@ -23,5 +24,9 @@ public class LocInfoDAO {
 		System.out.println(this.sqlSession);
 	}
 	
+	public LocInfoVO locinfo(String loc_id) {
+		LocInfoVO vo = sqlSession.selectOne("l.loc_info",loc_id);
+		return vo;
+	}
 	
 }

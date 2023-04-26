@@ -22,15 +22,15 @@
 	rel="stylesheet">
 
 <!-- Vendor CSS Files -->
-<link href="/culture/resources/assets/vendor/aos/aos.css" rel="stylesheet">
-<link href="/culture/resources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/culture/resources/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-<link href="/culture/resources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-<link href="/culture/resources/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-<link href="/culture/resources/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="./resources/assets/vendor/aos/aos.css" rel="stylesheet">
+<link href="./resources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="./resources/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="./resources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="./resources/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="./resources/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
 <!-- Template Main CSS File -->
-<link href="/culture/resources/assets/css/style.css?ver=1" rel="stylesheet">
+<link href="./resources/assets/css/style.css?ver=1" rel="stylesheet">
 
 
 <!-- =======================================================
@@ -45,6 +45,25 @@
 	function moreinfo(index) {
 
 		document.getElementById('moreinfo' + index).submit();
+	}
+
+	function search() {
+		//조회 카테고리 검색
+		let search = document.getElementById("search").value;
+
+		//검색어 조회
+		let search_text = document.getElementById("search_text").value.trim();
+
+		//카테고리가 전체보기(all)로 지정되어 있지않은 경우라면 반드시 검색어가 입력되어있어야한다.
+
+		if (search != 'all' && search_text == "") {
+			alert("검색어를 입력하세요");
+			return;
+		}
+
+		location.href = "info.do?page=" + "${page}" + "&genrenm="
+				+ "${genrenm}" + "&search=" + search + "&search_text="
+				+ encodeURIComponent(search_text);
 	}
 </script>
 
@@ -74,7 +93,7 @@
 	<!-- ======= Header ======= -->
 	<header id="header" class="d-flex align-items-center">
 		<div class="container d-flex align-items-center justify-content-between">
-			<a href="#" onclick="location.href='culture.do'" class="logo"><img src="/culture/resources/assets/img/logo.png" alt="" width="130px"></a>
+			<a href="#" onclick="location.href='culture.do'" class="logo"><img src="./resources/assets/img/logo.png" alt="" width="130px"></a>
 			<nav class="navbar">
 				<form class="d-flex">
 					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -119,14 +138,11 @@
 				<c:forEach var="vo" items="${ select }">
 					<a href="#" onclick="moreinfo('${vo.play_id }');" class="card col-3">
 						<form action="moreinfo.do" id="moreinfo${vo.play_id}">
-							<input type="hidden" name="play_id" value="${vo.play_id }">
-							<input type="hidden" name="play_from" value="${vo.play_from }">
-							<input type="hidden" name="play_to" value="${vo.play_to }">
-							<input type="hidden" name="play_poster" value="${vo.play_poster }">
-							<input type="hidden" name="play_prfnm" value="${vo.play_prfnm }">
-							<input type="hidden" name="play_genrenm" value="${vo.play_genrenm }">
-							<input type="hidden" name="play_prfstate" value="${vo.play_prfstate }">
-							<input type="hidden" name="play_locnm" value="${vo.play_locnm }">
+							<input type="hidden" name="play_id" value="${vo.play_id }"> <input type="hidden" name="play_from" value="${vo.play_from }"> <input
+								type="hidden" name="play_to" value="${vo.play_to }"> <input type="hidden" name="play_poster" value="${vo.play_poster }"> <input
+								type="hidden" name="play_prfnm" value="${vo.play_prfnm }"> <input type="hidden" name="play_genrenm" value="${vo.play_genrenm }">
+							<input type="hidden" name="play_prfstate" value="${vo.play_prfstate }"> <input type="hidden" name="play_locnm"
+								value="${vo.play_locnm }">
 							<div>
 								<img src="${vo.play_poster}" />
 								<div class="info">
@@ -140,7 +156,21 @@
 						</form>
 					</a>
 				</c:forEach>
+				<div class="row container d-flex justify-content-center">
+					<div class="col-2">
+						<select id="search" class="form-select ">
+							<option value="prfnm">제목</option>
+							<option value="locnm">장소</option>
+							<option value="fromto">기간</option>
+						</select>
+					</div>
+					<div class="col-3">
+						<input id="search_text" class="form-control col-2" type="text">
+					</div>
+					<button class="btn btn-outline-primary col-1" type="submit" onclick="search();">Search</button>
 
+				</div>
+				<p></p>
 				<div align="center" style="font-size: 20px;">${ pageMenu }</div>
 			</div>
 		</div>
@@ -185,16 +215,16 @@
 	<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 	<!-- Vendor JS Files -->
-	<script src="/culture/resources/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-	<script src="/culture/resources/assets/vendor/aos/aos.js"></script>
+	<script src="./resources/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+	<script src="./resources/assets/vendor/aos/aos.js"></script>
 
-	<script src="/culture/resources/assets/vendor/glightbox/js/glightbox.min.js"></script>
-	<script src="/culture/resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-	<script src="/culture/resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
-	<script src="/culture/resources/assets/vendor/waypoints/noframework.waypoints.js"></script>
-	<script src="/culture/resources/assets/vendor/php-email-form/validate.js"></script>
+	<script src="./resources/assets/vendor/glightbox/js/glightbox.min.js"></script>
+	<script src="./resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+	<script src="./resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
+	<script src="./resources/assets/vendor/waypoints/noframework.waypoints.js"></script>
+	<script src="./resources/assets/vendor/php-email-form/validate.js"></script>
 	<!-- Template Main JS File -->
-	<script src="/culture/resources/assets/js/main.js"></script>
+	<script src="./resources/assets/js/main.js"></script>
 
 
 </body>

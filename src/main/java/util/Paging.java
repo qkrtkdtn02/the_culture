@@ -6,7 +6,7 @@ package util;
         blockPage:한화면에 나타낼 페이지 메뉴 수
  */
 public class Paging {
-	public static String getPaging(String pageURL,int nowPage, int rowTotal, String genrenm, 
+	public static String getPaging(String pageURL,int nowPage, int rowTotal, String genrenm, String search_param,
 										int blockList, int blockPage){
 		
 		int totalPage/*전체페이지수*/,
@@ -52,6 +52,7 @@ public class Paging {
 			 */
 			sb.append( nowPage-1 );
 			sb.append("&genrenm="+genrenm);
+			sb.append("&"+search_param);
 			sb.append("'>◀</a>");
 		}
 		else
@@ -70,6 +71,7 @@ public class Paging {
 				sb.append("&nbsp;<a href='"+pageURL+"?page=");
 				sb.append(i);
 				sb.append("&genrenm="+genrenm);
+				sb.append("&"+search_param);
 				sb.append("'>");
 				sb.append(i);
 				sb.append("</a>");
@@ -84,6 +86,7 @@ public class Paging {
 			
 			sb.append(nowPage + 1);
 			sb.append("&genrenm="+genrenm);
+			sb.append("&"+search_param);
 			/*if(nowPage+blockPage > totalPage)nowPage = totalPage;
 			else
 				nowPage = nowPage+blockPage;

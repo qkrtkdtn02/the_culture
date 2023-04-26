@@ -22,15 +22,15 @@
 	rel="stylesheet">
 
 <!-- Vendor CSS Files -->
-<link href="/culture/resources/assets/vendor/aos/aos.css" rel="stylesheet">
-<link href="/culture/resources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/culture/resources/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-<link href="/culture/resources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-<link href="/culture/resources/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-<link href="/culture/resources/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="./resources/assets/vendor/aos/aos.css" rel="stylesheet">
+<link href="./resources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="./resources/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="./resources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="./resources/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="./resources/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
 <!-- Template Main CSS File -->
-<link href="/culture/resources/assets/css/style.css?ver=1" rel="stylesheet">
+<link href="./resources/assets/css/style.css?ver=1" rel="stylesheet">
 
 
 <!-- =======================================================
@@ -87,7 +87,7 @@
 	<!-- ======= Header ======= -->
 	<header id="header" class="d-flex align-items-center">
 		<div class="container d-flex align-items-center justify-content-between">
-			<a href="#" onclick="location.href='culture.do'" class="logo"><img src="/culture/resources/assets/img/logo.png" alt="" width="130px"></a>
+			<a href="#" onclick="location.href='culture.do'" class="logo"><img src="./resources/assets/img/logo.png" alt="" width="130px"></a>
 			<nav class="navbar">
 				<form class="d-flex">
 					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -137,17 +137,25 @@
 							</div>
 						</div></a>
 				</c:forEach>
-				<div>
-					<select id="search">
-						<option value="prfnm">제목</option>
-						<option value="locnm">장소</option>
-						<option value="fromto">기간</option>
-						<option value="prfnm_locnm_fromto">제목+장소+기간</option>
-					</select>
-					<input id="search_text">
-					<input type="button" value="검색" onclick="search();">
+				<div class="row container d-flex justify-content-center">
+
+					<div class="col-2">
+						<select  id="search" class="form-select ">
+							<option value="prfnm">제목</option>
+							<option value="locnm">장소</option>
+							<option value="fromto">기간</option>
+							<option value="genrenm">장르</option>
+							<option value="prfnm_locnm_fromto">제목+장소+기간+장르</option>
+						</select>
+					</div>
+					<div class="col-3">
+						<input id="search_text" class="form-control col-2" type="text">
+					</div>
+					<button class="btn btn-outline-primary col-1" type="submit" onclick="search();">Search</button>
+
 				</div>
-				<div align="center" style="font-size: 30px;">${ pageMenu }</div>
+				<p></p>
+				<div align="center" style="font-size: 20px;">${ pageMenu }</div>
 			</div>
 		</div>
 	</main>
@@ -190,16 +198,16 @@
 	<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 	<!-- Vendor JS Files -->
-	<script src="/culture/resources/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-	<script src="/culture/resources/assets/vendor/aos/aos.js"></script>
-
-	<script src="/culture/resources/assets/vendor/glightbox/js/glightbox.min.js"></script>
-	<script src="/culture/resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-	<script src="/culture/resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
-	<script src="/culture/resources/assets/vendor/waypoints/noframework.waypoints.js"></script>
-	<script src="/culture/resources/assets/vendor/php-email-form/validate.js"></script>
+	<script src="./resources/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+	<script src="./resources/assets/vendor/aos/aos.js"></script>
+	<script src="./resources/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+	<script src="./resources/assets/vendor/glightbox/js/glightbox.min.js"></script>
+	<script src="./resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+	<script src="./resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
+	<script src="./resources/assets/vendor/waypoints/noframework.waypoints.js"></script>
+	<script src="./resources/assets/vendor/php-email-form/validate.js"></script>
 	<!-- Template Main JS File -->
-	<script src="/culture/resources/assets/js/main.js"></script>
+	<script src="./resources/assets/js/main.js"></script>
 
 
 </body>

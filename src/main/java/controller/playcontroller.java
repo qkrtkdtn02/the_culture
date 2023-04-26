@@ -21,6 +21,7 @@ import dao.UserInfoDAO;
 import util.Common;
 import util.Paging;
 import util.Pagingupdate;
+import vo.LocInfoVO;
 import vo.PlayInfoVO;
 import vo.PlayVO;
 import vo.TodayVO;
@@ -41,12 +42,13 @@ public class playcontroller {
 
 	@Autowired
 	public playcontroller(PlayDAO playdao, PlayInfoDAO playinfodao, UserInfoDAO userinfodao, TodayDAO todaydao,
-			RepleDAO repledao) {
+			RepleDAO repledao, LocInfoDAO locinfodao) {
 		this.playdao = playdao;
 		this.playinfodao = playinfodao;
 		this.userinfodao = userinfodao;
 		this.todaydao = todaydao;
 		this.repledao = repledao;
+		this.locinfodao = locinfodao;
 
 	}
 
@@ -110,14 +112,36 @@ public class playcontroller {
 		map.put("start", start);
 		map.put("end", end);
 		map.put("genrenm", genrenm);
+		
+		String search = request.getParameter("search"); // 카테고리
+		String search_text = request.getParameter("search_text");
+
+		// 검색어가 입력되어 있는 경우
+		if (search != null) {
+
+			switch (search) {
+			case "prfnm":
+				map.put("prfnm", search_text);
+				break;
+			case "locnm":
+				map.put("locnm", search_text);
+				break;
+			case "fromto":
+				map.put("fromto", search_text);
+				break;
+			}// if
+
+		} // switch
 
 		int row_total = playdao.getRowTotal(map);
 		System.out.println(row_total);
+		String search_param = String.format("search=%s&search_text=%s", search, search_text);
+
 
 		// 하단 페이지 메뉴 생성
 		String pageMenu = Paging.getPaging("info.do", nowPage, // 현재 페이지
 				row_total, // 전체 게시글 수
-				genrenm, Common.Board.BLOCKLIST, // 한 페이지에 보여주는 게시글 수
+				genrenm,search_param, Common.Board.BLOCKLIST, // 한 페이지에 보여주는 게시글 수
 				Common.Board.BLOCKPAGE); // 페이지 메뉴의 수
 
 		List<PlayVO> list = playdao.selectgenre(map);
@@ -169,12 +193,13 @@ public class playcontroller {
 			case "fromto":
 				map.put("fromto", search_text);
 				break;
+			case "genrenm":
+				map.put("genrenm", search_text);
 			}// if
 
 		} // switch
 
 		int row_total = playdao.getRowallTotal(map);
-		System.out.println(row_total);
 		String search_param = String.format("search=%s&search_text=%s", search, search_text);
 
 		// 하단 페이지 메뉴 생성
@@ -217,8 +242,9 @@ public class playcontroller {
 		
 		String loc_id = infovo.getLoc_id();
 		
+		LocInfoVO locinfovo = locinfodao.locinfo(loc_id);
 		
-		
+		model.addAttribute("loc",locinfovo);
 		model.addAttribute("play", playvo);
 		model.addAttribute("info", infovo);
 
